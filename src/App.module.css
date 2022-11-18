@@ -1,0 +1,79 @@
+.wrapper {
+  margin: 0.25rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 46rem;
+}
+
+.taskInputAndButton {
+  margin-top: calc(0px - 1.5rem - 25px);
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.taskInputAndButton textarea{
+  width: 39.875rem;
+  height: 3.375rem;
+  border-radius: 8px;
+  resize: none;
+  padding: 0.8rem;
+  line-height: 1.6;
+  overflow: hidden;
+  background-color: var(--gray-400);
+  color: var(--gray-300);
+  border: 0;
+}
+.taskInputAndButton textarea:focus{
+  color: var(--gray-100);
+}
+
+.taskInputAndButton button {
+  background-color: var(--blue-dark);
+  color: var(--gray-100);
+  border-radius: 8px;
+  border: 0;
+  width: 5.625rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.taskInputAndButton button img {
+  margin-left: 0.5rem;
+}
+.taskInputAndButton button:hover {
+  background-color: var(--blue);
+}
+
+.taskFeedbackRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 1rem;
+  width: 100%;
+}
+.taskFeedbackRow span {
+  background-color: var(--gray-300);
+  border: 0;
+  border-radius: 999px;
+  color: var(--gray-100);
+  padding: 0.25rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-left: 0.5rem;
+  align-items: center;
+  padding: 0px 8px;
+}
+
+.taskFeedbackCreated {
+  color: var(--blue);
+}
+
+.taskFeedbackDone {
+  color: var(--purple-dark);
+
+}
