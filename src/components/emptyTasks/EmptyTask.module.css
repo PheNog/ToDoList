@@ -1,0 +1,33 @@
+.containerMaster {
+    display: flex;
+    border-top: 1px solid var(--gray-400);
+    padding: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    max-width:46rem;
+    width:100%
+}
+
+.containerMaster img {
+    margin-top: 3rem;
+}
+
+.wrapperTitleAndSubtitle {
+    margin-top: 1rem;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+    color: #808080;
+}
+.wrapperTitleAndSubtitle p {
+    opacity: 0.7;
+    font-size: 15px
+}

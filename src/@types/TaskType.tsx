@@ -1,8 +1,16 @@
 export interface TaskProps {
     content:string
-    onDeleteTask: (task: string) => void
-    keyClass: string
-    tasks: string[]
+    onDeleteTask: (taskId: string) => void
+    id: string
     isChecked: boolean
-    onCheckTask: (task: string) => void
+    onCheckTask: (taskId: string) => void
+}
+export interface TaskTest {
+    id: string
+    content: string
+    isChecked: boolean
+}
+
+export interface EmptyTaskType {
+    tasks: TaskTest[]
 }

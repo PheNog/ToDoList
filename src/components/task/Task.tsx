@@ -1,44 +1,40 @@
 import styles from './Task.module.css'
 import { Trash } from 'phosphor-react'
 import { TaskProps } from '../../@types/TaskType'
-import { useState } from 'react'
-
-
 
 export const Task: React.FC<TaskProps> = ({
-    content, 
-    onDeleteTask, 
-    keyClass, 
+    content,
+    onDeleteTask,
     onCheckTask,
-    tasks,
-    isChecked
+    id,
+    isChecked = false
 }) => {
-    console.log('content aq', keyClass)
-
-    const [taskChecked, setTaskChecked] =useState([])
 
     const handleDeleteTask = () => {
-        onDeleteTask(content)
+        onDeleteTask(id)
     }
 
-    const handleCheckTask = (task: any) => {
+    const handleCheckTask = (task: string) => {
+        isChecked = !isChecked
         onCheckTask(task)
     }
-    console.log('checkedaqq ', isChecked)
+
+    
+
     return (
         <div className={styles.taskWrapper} >
             <div className={styles.checkContentBox} >
-                <input 
-                checked={isChecked}
-                onClick={()=> {handleCheckTask(content);}}
-                // checked={taskChecked.includes}
-                id={`check+${keyClass}`} 
-                type='checkbox'
-                >
+                <div className={styles.agroupInputAndContent} >
+                    <input
+                        defaultChecked={isChecked}
+                        onClick={() => { handleCheckTask(id); }}
+                        id={id}
+                        type='checkbox'
+                    />
+                    <label htmlFor={id} >      </label>
+                    <p>{content}</p>
+                </div>
 
-                </input>
-                <label htmlFor={`check+${keyClass}`} >      </label>
-                <p>{content}</p>
                 <button
                     onClick={handleDeleteTask}
                 >
@@ -47,7 +43,6 @@ export const Task: React.FC<TaskProps> = ({
                     />
                 </button>
             </div>
-
         </div>
     )
 }

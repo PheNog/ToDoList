@@ -2,49 +2,65 @@ import './global.css'
 import { Header } from './components/header/Header'
 import styles from './App.module.css'
 import plusIcon from './components/assets/plus.svg'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { Task } from './components/task/Task'
-import { TaskProps } from './@types/TaskType'
+import { TaskTest } from './@types/TaskType'
+import { v4 as uuid } from 'uuid'
+import { EmptyTask } from './components/emptyTasks/EmptyTask'
 
+
+const emptyObject = {
+  id: '',
+  content: '',
+  isChecked:''
+}
 
 function App() {
-  const [tasks, setTasks] = useState([''])
+  const [tasks, setTasks] = useState<Array<TaskTest>>([])
 
-  const [newTask, setNewTask] = useState('')
+  const [newTask, setNewTask] = useState<any>(emptyObject)
 
   const handleNewTaskCreate = () => {
-
-    setTasks((tasks) => {
-      return [...tasks, newTask]
-    })
-    setNewTask('')
+    if (newTask?.content === '') return alert('Você não pode enviar uma tarefa vazia.')
+    setTasks([...tasks, newTask])
+    setNewTask(emptyObject)
   }
 
   const handleNewTaskChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setNewTask(event.target.value)
-  }
-
-  const handleDeleteTask = (taskToDelete: string) => {
-    const tasksWithoutDeletedOne = tasks.filter(task => {
-      return task !== taskToDelete
-    })
-
-    setTasks(tasksWithoutDeletedOne)
-
-  }
-  const [taskChecked, setTaskChecked] = useState<Array<TaskProps>>([])
-
-  const handleCheckTask = ({task}:any) => {
-    if (taskChecked.includes(task)) {
-      const newTasksChecked = taskChecked.filter((taskChecked) => taskChecked !== task)
-      setTaskChecked(newTasksChecked)
-      console.log(newTasksChecked)
-    } else {
-      setTaskChecked([...taskChecked, task])
+    const checkTask = {
+      id: uuid(),
+      content: event.target.value,
+      isChecked: false
     }
+    setNewTask(checkTask)
   }
 
-  const tasksCount = tasks.length - 1
+  const handleDeleteTask = (taskId: string) => {
+    const tasksWithoutDeletedOne = tasks.filter(task => {
+      return task?.id !== taskId
+    })
+    setTasks(tasksWithoutDeletedOne)
+  }
+
+  const handleCheckTask = (taskId: string) => {
+    const newTasksListChecked = tasks.map((item) => {
+      if (item.id === taskId) {
+        item.isChecked = !item.isChecked
+      }
+      return item
+    })
+    setTasks(newTasksListChecked)
+  }
+
+  const tasksDoneCount = tasks.filter((task) => {
+    return task?.isChecked === true
+  })
+
+  useEffect(() => {
+    setTasks(tasks)
+  },[tasks])
+
+  const tasksCount = tasks.length
   return (
     <div>
       <Header />
@@ -53,7 +69,7 @@ function App() {
           <textarea
             placeholder='Adicione uma nova tarefa'
             onChange={handleNewTaskChange}
-            value={newTask}
+            value={newTask?.content}
           >
           </textarea>
           <button
@@ -69,29 +85,30 @@ function App() {
           </div>
           <div className={styles.taskFeedbackDone} >
             Concluídas
-            <span>0 de {tasksCount}</span>
+            <span>{tasksDoneCount.length} de {tasksCount}</span>
           </div>
         </div>
+
         <div>
           {tasks.map((task, index) => {
-            if (task === '') return
-            const taskKey = task + index
+            if (task?.content === '') return
             return (
-
               <Task
-                isChecked={false}
+                isChecked={task?.isChecked}
                 onCheckTask={handleCheckTask}
-                tasks={tasks}
-                key={taskKey.toString()}
-                keyClass={taskKey}
-                content={task}
+                key={task?.id}
+                id={task?.id}
+                content={task?.content}
                 onDeleteTask={handleDeleteTask}
               />
             )
           })
-
           }
         </div>
+        <EmptyTask
+        tasks={tasks}
+        />
+
       </div>
     </div>
   )
