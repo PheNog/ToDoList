@@ -19,9 +19,9 @@
 
 .taskWrapper label {
     content: '';
-    width: 1.090rem;
+    width: 16px;
     display: flex;
-    height: 1.090rem;
+    height: 16px;
     border-radius: .7rem;
     border: 2px solid #4EA8DE;
     transition: .1s ease-in-out background-color;
@@ -36,6 +36,7 @@
 .taskWrapper input:checked + label{
     background-color: var(--purple-dark);
     border-color: var(--purple-dark);
+    width: 16px;
     background-position: center center;
     background-repeat: no-repeat;
     background-position: center center;
@@ -45,7 +46,7 @@
 
 .taskWrapper input:checked + label:hover {
     background-color: var(--purple);
-    border-color: var(--purple);
+    border-color: var(--purple);    width: 16px;
 }
 
 .taskWrapper input:checked + label + p{
@@ -107,4 +108,5 @@
 }
 .agroupInputAndContent p {
     margin-left:1rem;
+    width: 43rem;
 }
