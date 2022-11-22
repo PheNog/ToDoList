@@ -1,11 +1,8 @@
 import styles from './EmptyTask.module.css'
 import Clipboard from '../assets/Clipboard.svg'
-import { EmptyTaskType } from '../../@types/TaskType'
 
-export const EmptyTask = ({tasks}: EmptyTaskType) => {
 
-    if(tasks.length) return null
-
+export const EmptyTask = () => {
     return(
         <div className={styles.containerMaster} >
             <img src={Clipboard} />

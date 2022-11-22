@@ -105,9 +105,10 @@ function App() {
           })
           }
         </div>
-        <EmptyTask
-        tasks={tasks}
-        />
+        {
+          tasks.length === 0 && <EmptyTask />
+        }
+
 
       </div>
     </div>

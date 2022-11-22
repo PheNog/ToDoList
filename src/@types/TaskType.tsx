@@ -11,6 +11,3 @@ export interface TaskTest {
     isChecked: boolean
 }
 
-export interface EmptyTaskType {
-    tasks: TaskTest[]
-}
