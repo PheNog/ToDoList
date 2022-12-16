@@ -1,7 +1,7 @@
 
 <h1 align="center">ToDo List</h1>
 
-![Ignite Timer](https://user-images.githubusercontent.com/104810112/207723233-d2f66c3c-cfb8-4742-adbd-dbfcc90cfd00.png)
+![Capa (2)](https://user-images.githubusercontent.com/104810112/208203315-13acf299-2884-4740-9bb9-6eb0df3a018f.png)
 
 ---
 
