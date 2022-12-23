@@ -18,13 +18,19 @@
  
 ### Sobre o projeto💻
 # ToDoList
-Projeto de lista de afazeres, desafio da trilha IGNITE.
+Projeto feito para as aulas da trilha de especialização da RocketSeat Ignite, foi proposto que fizessemos um sistema de listas de afazeres usando conceitos React como: 
+- Estados
+- Imutabilidade do estado
+- Listas e chaves no ReactJS
+- Propriedades
+- Componentização
  
 #### Features
 
 - [X] Adicionar uma tarefa na lista
 - [X] Remover tarefa da lista
 - [X] Marcar tarefa como concluida
+- [X] Mostrar o progresso de conclusão das tarefas
 
 #### Tecnologias
 
